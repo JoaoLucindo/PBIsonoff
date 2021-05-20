@@ -5,7 +5,7 @@ module.exports = async function (context, req) {
     const deviceId = req.body.deviceId;
     const email = req.body.email;
     const secret = req.body.secret;
-    const region = req.body.region
+    const region = req.body.region;
 
     /* instantiate class */
     const connection = new ewelink({
@@ -15,9 +15,27 @@ module.exports = async function (context, req) {
     });
 
     var result = 'No Status';
-    result = await connection.toggleDevice(deviceId);
 
-    context.res = {
-        body: result
-    };
+    try {
+        result = await connection.toggleDevice(deviceId);
+        console.log(typeof result);
+        context.res = {
+            headers: {
+                "content-type": "application/json"
+            },
+            body: {
+                "ouput": "success"
+            },
+        };
+    }
+    catch (err) {
+        context.res = {
+            headers: {
+                "content-type": "application/json"
+            },
+            body: {
+                "output": "error"
+            },
+        };
+    }
 }
