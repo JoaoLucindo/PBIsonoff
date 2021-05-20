@@ -1,0 +1,81 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Cloud 2 Device",
+    "description": "cloud 2 device custom connector",
+    "version": "1.0"
+  },
+  "host": "powerbitrigger.azurewebsites.net",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/pbitrigger": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ouput": {
+                  "type": "string",
+                  "description": "ouput"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Toggle Device",
+        "description": "Toggle Device",
+        "operationId": "ToggleDevice",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "deviceId": {
+                  "type": "string",
+                  "description": "deviceId"
+                },
+                "email": {
+                  "type": "string",
+                  "description": "email"
+                },
+                "secret": {
+                  "type": "string",
+                  "description": "secret"
+                },
+                "region": {
+                  "type": "string",
+                  "description": "region",
+                  "title": "",
+                  "x-ms-visibility": "advanced",
+                  "default": "us"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "in": "query",
+      "name": "code"
+    }
+  },
+  "security": [],
+  "tags": []
+}
